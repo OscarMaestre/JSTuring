@@ -20,8 +20,24 @@ function testTape(assert){
     tape.setTape(differentTape, newPos);
     symbolTest="X";
     tape.writeSymbol(symbolTest);
+    
     assert.ok(tape.getCurrentSymbol()==symbolTest, "Set tape write");
     assert.ok(tape.getCurrentSymbol()!="0", "Set tape write");
+
+    let expectedResult="01X010101";
+    assert.ok(tape.toString()==expectedResult, "Set Tape write");
+
+    assert.throws(
+        function(){
+            tape.writeSymbolAt("-", -1);
+        }
+    );
+    assert.throws(
+        function(){
+            tape.writeSymbolAt("-", 10000);
+        }
+    );
+
     
 }
 function testProgram(){
@@ -31,8 +47,14 @@ function testProgram(){
     "S1, 1, 1, R, S2;"+
     "S2, 0, 0, L, S0;"+
     "S2, 0, 1, R, S0;"
+
+    let tape=new Tape();
+    let differentTape="010010101";
+    tape.setTape(differentTape);
+    
     let program=new Program(programText);
     program.runOneSentence();
 }
 
 QUnit.test("Tape test", testTape);
+QUnit.test("Program test", testTape);

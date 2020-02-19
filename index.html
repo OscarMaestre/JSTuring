@@ -4,19 +4,31 @@
         <title>JSTuring</title>
         <meta charset="utf-8">
         <style>
-            #program{
-                box-sizing: border-box;
+            table{
+                border: solid 2px black;
+                border-collapse: collapse;
+            }
+            td, th{
+                border: solid 2px black;
+                padding: 5px;
+            }
+            
+            .sentencetorun{
+                font-weight: bold;
+                border:double solid 2px black;
+                text-decoration: underline;
+                background-color: yellow;
             }
         </style>
     </head>
     <body>
-        
+        <input type="text" id="tape" value="000000000000000000000000000"> <br/>
         <textarea id="program" rows="40" cols="30">
-S0, 0, 1, L, S0;
+S0, 0, 1, R, S1;
 S0, 1, 0, L, S1;
 S1, 0, 0, L, S2;
 S1, 1, 1, R, S2;
-S2, 0, 0, L, S0;
+S2, 0, 0, R, S0;
 S2, 0, 1, R, S0;
         </textarea>
         <br/>
@@ -26,6 +38,21 @@ S2, 0, 1, R, S0;
         <button id="step" onclick="step();">
             Run one step / Ejecutar un paso
         </button>
+        <table >
+            <thead>
+                <tr>
+                    <th>If in state</th>
+                    <th>If symbol in tape</th>
+                    <th>Then write</th>
+                    <th>And move</th>
+                    <th>Go to state</th>
+                </tr>
+            </thead>
+            <tbody id="tableprogram">
+
+            </tbody>
+        </table>
+        <script src="classes.js" type="text/javascript"></script>
         <script src="turing.js" type="text/javascript"></script>
     </body>
 </html>
