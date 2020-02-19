@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JSTuring</title>
+        <meta charset="utf-8">
+        <style>
+            #program{
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <textarea id="program" rows="40" cols="30">
+S0, 0, 1, L, S0;
+S0, 1, 0, L, S1;
+S1, 0, 0, L, S2;
+S1, 1, 1, R, S2;
+S2, 0, 0, L, S0;
+S2, 0, 1, R, S0;
+        </textarea>
+        <br/>
+        <button id="run" onclick="run();">
+            Run program / Ejecutar programa
+        </button>
+        <button id="step" onclick="step();">
+            Run one step / Ejecutar un paso
+        </button>
+        <script src="turing.js" type="text/javascript"></script>
+    </body>
+</html>
